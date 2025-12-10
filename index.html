@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Estudantes</title>
+
+    <style>
+        body {
+            background: #eef1f4;
+            font-family: Arial, Helvetica, sans-serif;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        #filtroContainer {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        select {
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+        }
+
+        .card {
+            background: white;
+            padding: 15px;
+            border-radius: 12px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.10);
+            margin-bottom: 12px;
+            font-size: 18px;
+            display: flex;
+            justify-content: space-between;
+            transition: all 0.3s ease;
+            opacity: 0;
+            transform: translateY(15px);
+            animation: aparecer 0.4s forwards;
+        }
+
+        .card:hover {
+            transform: scale(1.03);
+        }
+
+        @keyframes aparecer {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .aprovado {
+            color: green;
+            font-weight: bold;
+        }
+
+        .recuperacao {
+            color: red;
+            font-weight: bold;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <h1>Resultado dos Estudantes</h1>
+
+    <div id="filtroContainer">
+        <select id="filtro">
+            <option value="todos">Mostrar todos</option>
+            <option value="aprovado">Aprovados</option>
+            <option value="recuperacao">Recuperação</option>
+        </select>
+    </div>
+
+    <div id="lista"></div>
+
+</body>
+<script src="scripts.js"></script>
+
+</html>
