@@ -2,8 +2,8 @@
 <html lang="pt-BR">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>Lista de Estudantes</title>
 
     <style>
@@ -30,23 +30,25 @@
             border: 1px solid #ccc;
         }
 
+        /* CARD */
         .card {
             background: white;
-            padding: 15px;
+            padding: 12px 14px;
             border-radius: 12px;
             box-shadow: 0 3px 10px rgba(0, 0, 0, 0.10);
             margin-bottom: 12px;
-            font-size: 18px;
-            display: flex;
-            justify-content: space-between;
-            transition: all 0.3s ease;
-            opacity: 0;
-            transform: translateY(15px);
-            animation: aparecer 0.4s forwards;
-        }
+            font-size: 16px;
 
-        .card:hover {
-            transform: scale(1.03);
+            display: flex;
+            align-items: center;
+            /* alinha verticalmente */
+            justify-content: space-between;
+            gap: 12px;
+
+            transition: all 0.18s ease;
+            opacity: 0;
+            transform: translateY(10px);
+            animation: aparecer 0.25s forwards;
         }
 
         @keyframes aparecer {
@@ -56,17 +58,77 @@
             }
         }
 
+        /* estrutura interna: três colunas + area do botão */
+        .card .col {
+            display: flex;
+            align-items: center;
+        }
+
+        .card .col.nome {
+            flex: 1;
+            /* ocupa mais espaço */
+            min-width: 120px;
+        }
+
+        .card .col.nota {
+            width: 110px;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .card .col.status {
+            width: 140px;
+            justify-content: flex-end;
+            text-align: right;
+        }
+
+        /* botão */
+        .card .acoes {
+            margin-left: 12px;
+        }
+
+        .card button {
+            background: #1976d2;
+            color: white;
+            border: none;
+            padding: 8px 10px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .card button:hover {
+            opacity: 0.9;
+            transform: translateY(-1px);
+        }
+
         .aprovado {
-            color: green;
-            font-weight: bold;
+            color: #0b7a12;
+            font-weight: 700;
         }
 
         .recuperacao {
-            color: red;
-            font-weight: bold;
+            color: #b71c1c;
+            font-weight: 700;
+        }
+
+        /* responsivo: em telas pequenas empilha as colunas */
+        @media (max-width: 520px) {
+            .card {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 8px;
+            }
+
+            .card .col.nota,
+            .card .col.status,
+            .card .acoes {
+                width: auto;
+                text-align: left;
+                justify-content: flex-start;
+            }
         }
     </style>
-
 </head>
 
 <body>
@@ -83,7 +145,7 @@
 
     <div id="lista"></div>
 
+    <script src="scripts.js"></script>
 </body>
-<script src="scripts.js"></script>
 
 </html>
